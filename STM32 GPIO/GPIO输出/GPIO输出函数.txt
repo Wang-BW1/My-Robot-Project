@@ -1,0 +1,4 @@
+GPIO_SetBits  可以把指定端口设置为高电平 可以同时选择多个引脚
+GPIO_ResetBits 把指定端口设置为低电平 可以同时选择多个引脚
+GPIO_WriteBit 根据第三个函数的值来设置指定端口 Bit_Set 设置高电平 Bit_Reset设置低电平 
+GPIO_Write 可以同时对16个端口进行写入操作
