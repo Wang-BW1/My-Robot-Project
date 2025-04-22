@@ -1,0 +1,24 @@
+#include "stm32f10x.h"                  // Device header
+#include "Delay.h"
+int main(void)
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//RCC¿ªÆôAPB2¿ªÆôGPIOA¿Ú
+	GPIO_InitTypeDef GPIO_InitLED;//定义一个结构体名为GPIO_InitLED
+	GPIO_InitLED.GPIO_Mode=GPIO_Mode_Out_PP;
+	GPIO_InitLED.GPIO_Pin=GPIO_Pin_0;
+	GPIO_InitLED.GPIO_Speed=GPIO_Speed_50MHz;//各种结构体的参数
+	GPIO_Init(GPIOA, &GPIO_InitLED);
+	while(1)
+	{
+		GPIO_ResetBits(GPIOA,GPIO_Pin_0);
+		Delay_ms(500);
+		GPIO_SetBits(GPIOA,GPIO_Pin_0);
+		
+		Delay_ms(500);
+		GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_RESET);//输出低电平点亮led
+		Delay_ms(500);//延时
+		GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_SET);
+		Delay_ms(500);
+	}
+
+}
